@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List con JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #container {
+            width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        #input-container {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        #task-input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        #add-task-btn {
+            padding: 10px 15px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-left: 10px;
+        }
+        #add-task-btn:hover {
+            background-color: #218838;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        li:hover {
+            background-color: #f9f9f9;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+        .delete-btn {
+            padding: 5px 10px;
+            border: none;
+            background-color: #dc3545;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <h1>La mia To-Do List</h1>
+        <div id="input-container">
+            <input type="text" id="task-input" placeholder="Aggiungi una nuova attività...">
+            <button id="add-task-btn">Aggiungi</button>
+        </div>
+        <ul id="task-list">
+            </ul>
+    </div>
+
+    <script>
+        // SOLUZIONE JAVASCRIPT
+
+        const button = document.querySelector("#add-task-btn");  // button
+        const quest = document.querySelector("input");           // input
+        const lista = document.querySelector("#task-list")     // ul
+        // let quest = document.querySelector("li");
+     
+        button.addEventListener("click",()=>{
+            console.log (quest.value) 
+
+            const mission = document.createElement("span");
+            const livello = document.createElement("li");
+            mission.textContent = (quest.value);
+            livello.append(mission);
+            lista.append(livello);
+            // document.mission.append(button)
+
+
+            const nuovoElemento = document.createElement("button");
+            nuovoElemento.textContent ="Elimina";
+            livello.append(nuovoElemento);
+            // nuovoElemento.className = 'delete-btn';     //  Entrambe le opzioni sono valide
+            nuovoElemento.setAttribute(`class`, `delete-btn`);
+
+            livello.addEventListener("click", ()=>{
+                mission.classList.toggle("completed")    //  'toggle' importantissimo per far apparire e sparire una classe  aaaah alla grande
+            })
+
+            nuovoElemento.addEventListener('click', ()=>{
+                livello.remove();
+            })
+
+            quest.value = "";
+
+        })
+
+        
+
+
+
+
+
+
+
+
+        
+        // document.li.append(div);
+
+
+
+
+        
+
+
+
+
+        // const fragment = document.createDocumentFragment();
+
+        //     for (let i = 0; i < 3; i++){
+
+        //         const item = document.createElement("li");
+        //         item.textContent = `Elemento ${i+1}`;
+        //         fragment.append(item);
+        //     }
+            
+        //     document.querySelector("ul").append(fragment);
+        
+
+        // function elemento (lista = "quest"){
+        //     quest.innerHTML = `Ciao ${lista}`;
+        // }
+
+     
+
+
+    </script>
+
+</body>
+</html>
